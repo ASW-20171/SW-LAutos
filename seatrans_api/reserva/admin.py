@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Reserva
+from .models.Reserva import Reserva
 # Register your models here.
 
 
