@@ -1,5 +1,5 @@
 from django.db import models
-from .Horario import Horario
+from .Cliente import Cliente
 from .Asiento import Asiento
 
 # Create your models here.
@@ -8,11 +8,10 @@ from .Asiento import Asiento
 class Reserva(models.Model):
 
     descripcion = models.CharField(max_length=60)
-    codigo = models.CharField(max_length=60, null=True, blank=True)
     estado = models.BooleanField(default=True)
-    fecha_reserva = models.DateField(null=True, blank=True)
+    fecha_reserva = models.DateTimeField(auto_now_add=True, null=True)
     costo = models.FloatField(null=True, blank=True)
-    horario = models.ForeignKey(Horario, null=True, blank=True)
+    cliente = models.ForeignKey(Cliente, null=True, blank=True)
     asiento = models.ForeignKey(Asiento, null=True, blank=True)
 
     class Meta:
@@ -20,4 +19,4 @@ class Reserva(models.Model):
         verbose_name_plural = "Reservas"
 
     def __str__(self):
-        return self.descripcion
+        return '%s %s' % (self.descripcion, self.horario.origen)

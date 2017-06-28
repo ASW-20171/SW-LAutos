@@ -5,6 +5,7 @@ class Asiento(models.Model):
 
     tipo_asiento = models.CharField(max_length=60)
     descripcion = models.CharField(max_length=50)
+    costo = models.FloatField()
 
     class Meta:
         verbose_name = "Asiento"
